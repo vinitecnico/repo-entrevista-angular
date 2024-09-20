@@ -1,27 +1,14 @@
-# AngularProject
+# Bugs para serem corrigidos:
+- Deveria ser listadas 3 tasks já pré-preenchidas. Mas elas só surgem quando o cliente preenche algo e clicar em adicionar task. Essas 3 tasks devem ser pré-carregada na inicialização.
+- Existe um erro que estoura no console quando o app é inicializado, e portanto deve ser solucionado.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+# Melhorias para serem implementadas:
+- Limpar o input após incluir a task;
+- Não permitir adicionar a mesma task, devendo aceitar somente letras com no mínimo 20 caracteres;
+- Criar um mecanismo para remover todas as tasks selecionados de uma só vez.
+- Não permitir adicionar tasks em branco.
 
-## Development server
+# Item para implementar:
+- Crie um botão que navega para uma próxima página, exibe os itens adicionados por ordem alfabética, utilizando um mecanismo de hashlocation strategy.
+- Crie um teste unitário para a TaskService
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
