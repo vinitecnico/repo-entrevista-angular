@@ -14,5 +14,6 @@ export class TaskFormComponent {
   onSubmit() {
       console.log('Task added');
       this.taskService.addTask(this.taskTitle.trim());
+      this.taskTitle = ''
   }
 }

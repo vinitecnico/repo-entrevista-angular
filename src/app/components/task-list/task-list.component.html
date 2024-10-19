@@ -1,6 +1,20 @@
-
 <h1>{{ titulo }}</h1>
 <ul>
-    <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
 </ul>
-  
+
+<p *ngIf="!tasks.length; else templateShowBtnRemovedTask">
+  you don't have tasks registered yet!
+</p>
+
+<ng-template #templateShowBtnRemovedTask>
+  <button
+    type="submit"
+    (click)="removedTaskCompleted()"
+    [disabled]="disableBtnRemovedTaskCompleted()"
+  >
+    remove all task completed
+  </button>
+
+  <button routerLink="/summary">show tasks ordered</button>
+</ng-template>

@@ -1,5 +1,18 @@
-<form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="taskTitle" name="title" placeholder="New Task">
-    <button type="submit">Add Task</button>
-  </form>
-  
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+  <input
+    type="text"
+    [(ngModel)]="taskTitle"
+    name="title"
+    placeholder="New Task"
+    pattern="[A-Za-z ]+"
+    minlength="20"
+    required
+    #title="ngModel"
+  />
+  <!-- <div *ngIf="title?.invalid && title?.touched && title?.errors">
+    <small *ngIf="title?.errors?.required">O título é obrigatório.</small>
+    <small *ngIf="title?.errors?.pattern">O título deve conter apenas letras.</small>
+    <small *ngIf="title?.errors?.minlength">O título deve ter no mínimo 20 caracteres.</small>
+  </div> -->
+  <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+</form>

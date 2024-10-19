@@ -41,6 +41,10 @@ body {
   button:hover {
     background-color: #ff1a1a;
   }
+
+  button:disabled {
+    opacity: 0.5;
+  }
   
   input[type="text"] {
     width: 70%;

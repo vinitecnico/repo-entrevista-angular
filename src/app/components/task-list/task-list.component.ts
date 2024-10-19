@@ -1,22 +1,40 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  // AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Task, TaskService } from '../../services/task.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent implements OnInit, AfterViewInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
-  titulo: string = '';
+  titulo: string = 'Título lista';
+  taskSubscription!: Subscription;
 
   constructor(private taskService: TaskService) {}
 
-  ngOnInit() {
-    this.taskService.tasks$.subscribe(tasks => this.tasks = tasks);
+  removedTaskCompleted() {
+    this.taskService.removedTaskCompleted();
   }
 
-  ngAfterViewInit() {
-    this.titulo = 'Título lista';
+  disableBtnRemovedTaskCompleted() {
+    return !this.tasks.filter((task) => task.completed).length;
+  }
+
+  ngOnInit() {
+    this.tasks = this.taskService.getTasks();
+    this.taskSubscription = this.taskService.tasks$.subscribe(
+      (tasks) => (this.tasks = tasks)
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.taskSubscription?.unsubscribe();
   }
 }

@@ -28,6 +28,10 @@ export class TaskService {
     });
   }
 
+  getTasks(): Task[] {
+    return this.tasks
+  }
+
   addTask(title: string) {
     const newTask: Task = {
       id: Date.now(),
@@ -40,6 +44,11 @@ export class TaskService {
 
   removeTask(id: number) {
     this.tasks = this.tasks.filter(task => task.id !== id);
+    this.tasksSubject.next(this.tasks);
+  }
+
+  removedTaskCompleted() {
+    this.tasks = this.tasks.filter(task => !task.completed)
     this.tasksSubject.next(this.tasks);
   }
 
